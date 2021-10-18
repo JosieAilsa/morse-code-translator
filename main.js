@@ -68,7 +68,7 @@ class EnglishToMorse{
    }
 
    get stringOutput(){
-      this.translation
+      return this.translation.join(" ");
 
    }
 
@@ -82,5 +82,6 @@ const newPhrase = new EnglishToMorse
 console.log(newPhrase.addNewPhrase(("What am I doing")))
 console.log(newPhrase.breakDownPhrase)
 console.log(newPhrase.translatePhrase)
+console.log(newPhrase.stringOutput)
 
 
