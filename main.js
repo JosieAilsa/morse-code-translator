@@ -11,13 +11,11 @@ Break the word up into and array. For spaces add a /
 Create a new array and for each item in the array find someway of accessing the value of that value. 
 
 */ 
-// const userInput = document.querySelector("input");
-// const translateButton = document.querySelector("#translateButton");
-// const refreshButton = document.querySelector("#refreshButton");
-// const translation = document.querySelector("#translation");
+const translateButton = document.querySelector("#translateButton");
+const refreshButton = document.querySelector("#refreshButton");
 
 
- 
+// The class object with all the alphabet kets and their morse value 
 class EnglishToMorse{
    constructor(){
    this.A = ".-",
@@ -45,19 +43,21 @@ class EnglishToMorse{
    this.X = "-..-",
    this.Y = "-.--",
    this.Z = "--.."
-   this.output = ""
-   this.phraseArray = ""
-
+   this.output = "",
+   this.phraseArray = [],
+   this.translation = ""
    }
-   addNewPhrase (phrase) {
+   // Add a method to add a new phrase
+   addNewPhrase(phrase) {
       return this.phrase = phrase;
    }
-   get breakDownPhrase(){
+
+   breakDownPhrase(){
       const phraseArray = this.phrase.toUpperCase().split("")
       return this.phraseArray = phraseArray;
    }
 
-   get translatePhrase() {
+   translate() {
     const translation = this.phraseArray.map((element) => {
       if (element === " ") {
          return "/"
@@ -67,21 +67,47 @@ class EnglishToMorse{
     return this.translation = translation;
    }
 
-   get stringOutput(){
-      return this.translation.join(" ");
-
+   stringOutput() {
+      return this.output = this.translation.join(" ");
    }
-
+      
    clearPhrase() {
-      this.phraseArray = ""
+      this.phraseArray = []
+      this.translation = []
+      this.stringOutput = ""
    }
+   
 };
+///test object. 
 
-const newPhrase = new EnglishToMorse
+///function get transaltion from the object 
+const getTranslation = (newObject, phrase) => {
+   newObject.addNewPhrase(phrase);
+   newObject.breakDownPhrase();
+   newObject.translate();
+   newObject.stringOutput();
+   return newObject.output
+}
 
-console.log(newPhrase.addNewPhrase(("What am I doing")))
-console.log(newPhrase.breakDownPhrase)
-console.log(newPhrase.translatePhrase)
-console.log(newPhrase.stringOutput)
+const getOutput = (newObject, outputBox) => {
+   return outputBox.innerHTML = `${newObject.output}`
+}
 
+///Get input from the user 
+   translateButton.addEventListener("click", () => {
+      const translation = document.querySelector("#translation");
+      const userInputValue = document.querySelector("#input").value;
+      const englishToMorse = new EnglishToMorse
+      getTranslation(englishToMorse, userInputValue);
+      return getOutput(englishToMorse, translation)
+
+   })
+//Clear the input box
+    refreshButton.addEventListener("click", () => {
+      translation.innerHTML = " "
+   })
+
+class morseToEnglish extends EnglishToMorse {
+
+}
 
