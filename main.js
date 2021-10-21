@@ -10,9 +10,9 @@ Give it the word as a parameter/phrase.
 Break the word up into and array. For spaces add a / 
 Create a new array and for each item in the array find someway of accessing the value of that value. 
 
-*/ 
-const translateButton = document.querySelector("#translateButton");
-const refreshButton = document.querySelector("#refreshButton");
+// */ 
+// const translateButton = document.querySelector("#translateButton");
+// const refreshButton = document.querySelector("#refreshButton");
 
 
 // The class object with all the alphabet kets and their morse value 
@@ -57,7 +57,7 @@ class EnglishToMorse{
       return this.phraseArray = phraseArray;
    }
 
-   translate() {
+   translateEnglishToMorse() {
     const translation = this.phraseArray.map((element) => {
       if (element === " ") {
          return "/"
@@ -67,14 +67,14 @@ class EnglishToMorse{
     return this.translation = translation;
    }
 
-   stringOutput() {
+   getStringOutput() {
       return this.output = this.translation.join(" ");
    }
       
    clearPhrase() {
       this.phraseArray = []
       this.translation = []
-      this.stringOutput = ""
+      this.getStringOutput = ""
    }
    
 };
@@ -84,8 +84,8 @@ class EnglishToMorse{
 const getTranslation = (newObject, phrase) => {
    newObject.addNewPhrase(phrase);
    newObject.breakDownPhrase();
-   newObject.translate();
-   newObject.stringOutput();
+   newObject.translateEnglishToMorse();
+   newObject.getStringOutput();
    return newObject.output
 }
 
@@ -93,21 +93,52 @@ const getOutput = (newObject, outputBox) => {
    return outputBox.innerHTML = `${newObject.output}`
 }
 
-///Get input from the user 
-   translateButton.addEventListener("click", () => {
-      const translation = document.querySelector("#translation");
-      const userInputValue = document.querySelector("#input").value;
-      const englishToMorse = new EnglishToMorse
-      getTranslation(englishToMorse, userInputValue);
-      return getOutput(englishToMorse, translation)
+// ///Get input from the user 
+//    translateButton.addEventListener("click", () => {
+//       const translation = document.querySelector("#translation");
+//       const userInputValue = document.querySelector("#input").value;
+//       const englishToMorse = new EnglishToMorse
+//       getTranslation(englishToMorse, userInputValue);
+//       return getOutput(englishToMorse, translation)
 
-   })
-//Clear the input box
-    refreshButton.addEventListener("click", () => {
-      translation.innerHTML = " "
-   })
+//    })
+// //Clear the input box
+//     refreshButton.addEventListener("click", () => {
+//       translation.innerHTML = " "
+//    })
 
-class morseToEnglish extends EnglishToMorse {
+// const englishToMorse  = new EnglishToMorse; 
+// englishToMorse.addNewPhrase("hello my man");
+// console.log(englishToMorse.breakDownPhrase());
+// console.log(englishToMorse.translateEnglishToMorse());
+// console.log(englishToMorse.getStringOutput())
 
+class MorseToEnglish extends EnglishToMorse {
+   constructor(){
+      super()
+   }
+
+   breakDownMorse(){
+      const phraseArray = this.phrase.toUpperCase().split(" ")
+      return this.phraseArray = phraseArray;
+   }
+
+   translateMorseToEnglish() {
+      let morsetoEnglishArray = this.phraseArray.map((value) => {
+         if (value === "/") {
+            return " "
+            } 
+         for (let key in this ) {
+            if (this[key]=== value) {
+               return key;
+            }
+            }
+         });
+         return morsetoEnglishArray.join("");
+   }
 }
+const morseToEnglish = new MorseToEnglish;
 
+morseToEnglish.addNewPhrase(".... . .-.. .-.. --- / -- -.-- / -- .- -.")
+console.log(morseToEnglish.breakDownMorse())
+console.log(morseToEnglish.translateMorseToEnglish())
