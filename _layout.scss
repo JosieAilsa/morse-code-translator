@@ -1,0 +1,45 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+
+    h1 {
+        grid-area: 1/1/1/6;
+        text-align: center;
+    }
+    .input{
+        @media only screen and (max-width: 1026px){
+        grid-area: 2/1/2/6;
+        }
+        grid-area: 2/1/2/4;
+    }
+    .translation{
+        @media only screen and (max-width: 1026px){
+            grid-area: 3/1/3/6;
+        }
+        grid-area: 2/3/2/6;
+    }
+    .input, .translation{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #translateButton{
+        @media only screen and (max-width: 1026px){
+            grid-area: 4/1/4/6;
+            text-align: te;
+        }
+        grid-area: 3/2/3/2;
+
+    }
+    #refreshButton{
+        @media only screen and (max-width: 1026px){
+            grid-area: 5/1/5/6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        grid-area: 3/4/3/5;
+    }
+}

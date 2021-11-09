@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+$primary-font: 'Poppins', sans-serif;
+$primary-color: #a197c2ab;
+$secondary-color: rgb(243, 209, 232);
+
+*{
+    margin: 0px;
+    font-family: $primary-font;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+@media only screen and (max-width: 480px) {
+      background-image: url("./bg-01.svg");
+      background-size: cover;
+      background-repeat: repeat;
+    }
+
+  @media only screen and (min-width: 480px) and (max-width: 1366px) {
+      background-image: url("./bg-02.svg");
+      background-size: cover;
+      background-repeat: repeat;
+    }
+
+  @media only screen and (min-width: 1366px) {
+      background-image: url("./bg-03.svg");
+      background-size: contain;
+      background-repeat: repeat;
+    }
+}

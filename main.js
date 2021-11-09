@@ -11,8 +11,8 @@ Break the word up into and array. For spaces add a /
 Create a new array and for each item in the array find someway of accessing the value of that value. 
 
 // */ 
-// const translateButton = document.querySelector("#translateButton");
-// const refreshButton = document.querySelector("#refreshButton");
+const translateButton = document.querySelector("#translateButton");
+const refreshButton = document.querySelector("#refreshButton");
 
 
 ///function get transaltion from the object 
@@ -115,15 +115,12 @@ class EnglishToMorse{
       getMorseTranslation(englishToMorse, userInputValue);
       return getOutput(englishToMorse, translation)
       } 
+      //If the value is Morse
       const morseToEnglish = new MorseToEnglish;
       console.log(getEnglishTranslation(morseToEnglish,userInputValue));
       return getOutput(morseToEnglish,translation);
    })
 
-   const getUserInput = (inputValue) => {
-      inputValue
-
-   }
 //Clear the input box
     refreshButton.addEventListener("click", () => {
       translation.innerHTML = ""

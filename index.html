@@ -5,15 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morse Code Translator</title>
+    <link rel="stylesheet" href="./main.css">
     <script aync defer src= "main.js"></script>
 </head>
-<body>
+<body class = "container">
     <h1>Translate to Morse Code </h1>
-    <label for = "input">Write your text here: </label>
-    <input id = "input" type="text">
-    <button class ="butttons" id ="translateButton">Translate!</button>
-    <button class ="butttons" id ="refreshButton">Refresh</button>
-    <p id = "translation"></p>
+        <div class = "input">
+            <label for = "input-label">Write your text here: </label>
+            <input id = "input" type="text">
+        </div>
+        <div class = "translation">
+            <label for="translation">Your translation is: </label>
+            <p name = "translation" id = "translation"></p>
+        </div>
+        <button class ="btn" id ="translateButton">Translate!</button>
+        <button class ="btn" id ="refreshButton">Refresh</button>
+    </div>
 </body>
-
 </html>
