@@ -11,8 +11,10 @@ Break the word up into and array. For spaces add a /
 Create a new array and for each item in the array find someway of accessing the value of that value. 
 
 // */ 
-const translateButton = document.querySelector("#translateButton");
-const refreshButton = document.querySelector("#refreshButton");
+const translateButton = document.querySelector("#button___translate");
+const refreshButton = document.querySelector("#button__refresh");
+const translation = document.querySelector("#translation__text");
+let userInput = document.querySelector("#input__text");
 
 
 ///function get transaltion from the object 
@@ -106,8 +108,7 @@ class EnglishToMorse{
 
 // /Get input from the user a
    translateButton.addEventListener("click", () => {
-      const translation = document.querySelector("#translation");
-      const userInputValue = document.querySelector("#input").value;
+      const userInputValue = document.querySelector("#input__text").value;
       //If the value is in English 
       const engRegEx = new RegExp ("[a-zA-z]")
       if (engRegEx.test(userInputValue)) {
@@ -123,7 +124,10 @@ class EnglishToMorse{
 
 //Clear the input box
     refreshButton.addEventListener("click", () => {
+      userInput.value = ""
       translation.innerHTML = ""
+      // getEnglishTranslation.clearPhrase();
+      // getMorseTranslation.clearPhrase();
    })
 
 

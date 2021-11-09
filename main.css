@@ -30,22 +30,24 @@ body {
   }
 }
 
-#input, #translation {
+#input__text, #translation__text {
   font-family: "Poppins", sans-serif;
   width: 40vmin;
   height: 25vmin;
-  background-color: #a197c2ab;
+  background-color: #110638;
   border-radius: 1vmin;
   border: none !important;
+  color: #f1e1ec;
 }
 
 .btn {
   border-radius: 10vmin;
-  background: #a197c2ab;
+  background: #110638;
   border: none !important;
   height: 15vmin;
   width: 25vmin;
   color: whitesmoke;
+  margin: 2vmin;
 }
 
 body {
@@ -79,25 +81,10 @@ body .input, body .translation {
   justify-content: center;
   align-items: center;
 }
-body #translateButton {
-  grid-area: 3/2/3/2;
-}
-@media only screen and (max-width: 1026px) {
-  body #translateButton {
-    grid-area: 4/1/4/6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-body #refreshButton {
-  grid-area: 3/4/3/5;
-}
-@media only screen and (max-width: 1026px) {
-  body #refreshButton {
-    grid-area: 5/1/5/6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+body .button {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+  grid-area: 4/1/5/6;
 }

@@ -1,0 +1,23 @@
+{
+  "name": "morse-code-translator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosieAilsa/morse-code-translator.git"
+  },
+  "keywords": [],
+  "author": "Josie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosieAilsa/morse-code-translator/issues"
+  },
+  "homepage": "https://github.com/JosieAilsa/morse-code-translator#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}

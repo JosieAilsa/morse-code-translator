@@ -1,10 +1,11 @@
-#input, #translation {
+#input__text, #translation__text {
     font-family: $primary-font;
     width: 40vmin;
     height: 25vmin;
     background-color: $primary-color;
     border-radius: 1vmin;
     border: none !important;
+    color: $secondary-color;
 }
 
 .btn{
@@ -14,4 +15,5 @@
     height: 15vmin;
     width: 25vmin;
     color: whitesmoke;
+    margin: 2vmin;
 }
