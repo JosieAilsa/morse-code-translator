@@ -49,5 +49,5 @@ describe("Morse to English", () => {
         expect(helloWorldTranslation.output).toBe("HELLO WORLD")
     })
 
-})
+});
 
