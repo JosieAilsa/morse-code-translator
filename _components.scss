@@ -8,6 +8,12 @@
     color: $secondary-color;
 }
 
+#input__text:focus{
+    background-color: $secondary-color;
+    color: $primary-color;
+    transition: background-color 0.5s, color 1s ease-in-out;
+}
+
 .btn{
     border-radius: 10vmin;
     background: $primary-color;
@@ -16,4 +22,9 @@
     width: 25vmin;
     color: whitesmoke;
     margin: 2vmin;
+}
+.btn:hover{
+    background-color: $secondary-color;
+    color: $primary-color;
+    transition: background-color 0.5s, color 1s ease-in-out;
 }

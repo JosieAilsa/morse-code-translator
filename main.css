@@ -40,6 +40,12 @@ body {
   color: #f1e1ec;
 }
 
+#input__text:focus {
+  background-color: #f1e1ec;
+  color: #110638;
+  transition: background-color 0.5s, color 1s ease-in-out;
+}
+
 .btn {
   border-radius: 10vmin;
   background: #110638;
@@ -48,6 +54,12 @@ body {
   width: 25vmin;
   color: whitesmoke;
   margin: 2vmin;
+}
+
+.btn:hover {
+  background-color: #f1e1ec;
+  color: #110638;
+  transition: background-color 0.5s, color 1s ease-in-out;
 }
 
 body {

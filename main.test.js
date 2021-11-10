@@ -2,36 +2,74 @@ import { exportAllDeclaration } from "@babel/types";
 import { EnglishToMorse, MorseToEnglish } from "./main";
 
 describe("English to Morse", () => {
-    const helloTranslation = new EnglishToMorse;
-    helloTranslation.addNewPhrase("hello");
-    helloTranslation.breakDownPhrase();
-    helloTranslation.translateEnglishToMorse();
-    helloTranslation.getStringOutput();
+    let translator;
+
+    beforeEach (() => {
+        translator = new EnglishToMorse();
+    })
+
     test("Should add `hello` to the phrase key within the object", () => {
-        expect(helloTranslation.phrase).toBe("hello");
+        //Arrange 
+        translator.addNewPhrase("hello");
+         // Assert
+        expect(translator.phrase).toBe("hello");
     })
     test("Should break up `hello` into array of uppercase letters", () => {
-        expect(helloTranslation.phraseArray).toMatchObject([ 'H', 'E', 'L', 'L', 'O' ])
+        //Arrange
+        //Act
+        translator.addNewPhrase("hello");
+        translator.breakDownPhrase();
+        // Assert
+        expect(translator.phraseArray).toMatchObject([ 'H', 'E', 'L', 'L', 'O' ])
     })
     test("Should access the key matching the letter from within the object, returning the morse values", () => {
-        expect(helloTranslation.translation).toMatchObject([ '....', '.', '.-..', '.-..', '---' ])
+         //Arrange
+        //Act
+        translator.addNewPhrase("hello");
+        translator.breakDownPhrase();
+        translator.getTranslation();
+        // Assert
+        expect(translator.translation).toMatchObject([ '....', '.', '.-..', '.-..', '---' ])
     })
     test("Should join the array together into a string an return it", () => {
-        expect(helloTranslation.output).toBe(".... . .-.. .-.. ---")
+         //Arrange
+        //Act
+        translator.addNewPhrase("hello");
+        translator.breakDownPhrase();
+        translator.getTranslation();
+        translator.getStringOutput();
+        // Assert
+        expect(translator.output).toBe(".... . .-.. .-.. ---")
+    })
+    test("Integrated function should return translation", () => {
+        //Arrange
+        //Act
+        translator.translateEnglishToMorse("hello");
+        //Assert
+        expect(translator.output).toBe(".... . .-.. .-.. ---")
     })
 })
 
 describe("Morse to English", () => {
-    const helloWorldTranslation = new MorseToEnglish; 
-    helloWorldTranslation.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
-    helloWorldTranslation.breakDownMorse();
-    helloWorldTranslation.translateMorseToEnglish();
-    helloWorldTranslation.getStringOutput();
+    let translator; 
+    beforeEach (() => {
+    translator = new MorseToEnglish; 
+    });
+    // helloWorldTranslation.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
+    // helloWorldTranslation.breakDownMorse();
+    // helloWorldTranslation.translateMorseToEnglish();
+    // helloWorldTranslation.getStringOutput();
     test("Should add `hello world` to the phrase in the object", () => {
-        expect(helloWorldTranslation.phrase).toBe(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
-    })
+        //Arrange 
+        translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        // Assert
+        expect(translator.phrase).toBe(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        })
+
     test("Should break up `hello world` into an array based on spaces between letters", () => {
-        expect(helloWorldTranslation.phraseArray).toMatchObject(
+        translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        translator.breakDownMorse();
+        expect(translator.phraseArray).toMatchObject(
             [ '....', '.',   '.-..',
             '.-..', '---', '/',
             '.--',  '---', '.-.',
@@ -39,14 +77,31 @@ describe("Morse to English", () => {
         )
     })
     test("Should translate each letter in the morse array ", () => {
-        expect(helloWorldTranslation.translation).toMatchObject(
+        //Arrange 
+        translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        translator.breakDownMorse();
+        translator.translateMorse()
+        //Assert 
+        expect(translator.translation).toMatchObject(
             ['H', 'E', 'L', 'L',
             'O', ' ', 'W', 'O',
             'R', 'L', 'D']
         )
     })
-    test("Should return a string of english", () => {
-        expect(helloWorldTranslation.output).toBe("HELLO WORLD")
+    test("Should translate return string in English ", () => {
+        //Arrange 
+        translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        translator.breakDownMorse();
+        translator.translateMorse();
+        translator.getStringOutput()
+        //Assert 
+        expect(translator.output).toBe("HELLO WORLD");
+    })
+    test("Integrated function should return translation", () => {
+        //Arrange
+        translator.translateEnglishToMorse(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        //Assert 
+        expect(translator.output).toBe("HELLO WORLD")
     })
 
 });

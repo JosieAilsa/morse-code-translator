@@ -80,8 +80,15 @@ export class EnglishToMorse{
       return this.phraseArray = phraseArray;
    }
 
-   translateEnglishToMorse() {
-    const translation = this.phraseArray.map((element) => {
+   translateEnglishToMorse(phrase) {
+   this.addNewPhrase(phrase);
+   this.breakDownPhrase();
+   this.getTranslation();
+   this.getStringOutput();
+   }
+
+   getTranslation() { 
+   const translation = this.phraseArray.map((element) => {
       if (element === " ") {
          return "/"
       }
@@ -141,7 +148,7 @@ export class MorseToEnglish extends EnglishToMorse {
       return this.phraseArray = phraseArray;
    }
 
-   translateMorseToEnglish() {
+   translateMorse() {
       let translation = this.phraseArray.map((value) => {
          if (value === "/") {
             return " "
@@ -149,16 +156,27 @@ export class MorseToEnglish extends EnglishToMorse {
          for (let key in this ) {
             if (this[key]=== value) {
                return key;
-            }
+               }
             }
          });
          return this.translation = translation;
       }
-   }
+   
+   translateEnglishToMorse(phrase){
+      this.addNewPhrase(phrase);
+      this.breakDownMorse();
+      this.translateMorse();
+      this.getStringOutput();
+      }
+   
+}
+   
 
 // Test Eng to Morse
 
  const englishToMorse  = new EnglishToMorse; 
+
+ englishToMorse.translateEnglishToMorse("hello")
    // englishToMorse.addNewPhrase("hello");
    // console.log(englishToMorse.breakDownPhrase());
    // console.log(englishToMorse.translateEnglishToMorse());
@@ -168,13 +186,13 @@ export class MorseToEnglish extends EnglishToMorse {
 
    const morseToEnglish = new MorseToEnglish;
 
-   morseToEnglish.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
-   // console.log(morseToEnglish.breakDownMorse())
-   // console.log(morseToEnglish.translateMorseToEnglish())
-   // console.log(morseToEnglish.getStringOutput())
+//    morseToEnglish.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
+//    // console.log(morseToEnglish.breakDownMorse())
+//    // console.log(morseToEnglish.translateMorseToEnglish())
+//    // console.log(morseToEnglish.getStringOutput())
 
-  console.log(morseToEnglish.phrase)
-  console.log(morseToEnglish.translation)
+//   console.log(morseToEnglish.phrase)
+//   console.log(morseToEnglish.translation)
 
 
 

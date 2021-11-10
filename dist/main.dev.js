@@ -86,7 +86,15 @@ function () {
     }
   }, {
     key: "translateEnglishToMorse",
-    value: function translateEnglishToMorse() {
+    value: function translateEnglishToMorse(phrase) {
+      this.addNewPhrase(phrase);
+      this.breakDownPhrase();
+      this.getTranslation();
+      this.getStringOutput();
+    }
+  }, {
+    key: "getTranslation",
+    value: function getTranslation() {
       var _this = this;
 
       var translation = this.phraseArray.map(function (element) {
@@ -163,8 +171,8 @@ function (_EnglishToMorse) {
       return this.phraseArray = phraseArray;
     }
   }, {
-    key: "translateMorseToEnglish",
-    value: function translateMorseToEnglish() {
+    key: "translateMorse",
+    value: function translateMorse() {
       var _this2 = this;
 
       var translation = this.phraseArray.map(function (value) {
@@ -180,6 +188,14 @@ function (_EnglishToMorse) {
       });
       return this.translation = translation;
     }
+  }, {
+    key: "translateEnglishToMorse",
+    value: function translateEnglishToMorse(phrase) {
+      this.addNewPhrase(phrase);
+      this.breakDownMorse();
+      this.translateMorse();
+      this.getStringOutput();
+    }
   }]);
 
   return MorseToEnglish;
@@ -187,16 +203,16 @@ function (_EnglishToMorse) {
 
 
 exports.MorseToEnglish = MorseToEnglish;
-var englishToMorse = new EnglishToMorse(); // englishToMorse.addNewPhrase("hello");
+var englishToMorse = new EnglishToMorse();
+englishToMorse.translateEnglishToMorse("hello"); // englishToMorse.addNewPhrase("hello");
 // console.log(englishToMorse.breakDownPhrase());
 // console.log(englishToMorse.translateEnglishToMorse());
 // console.log(englishToMorse.getStringOutput())
 /// Test Morse to Eng 
 
-var morseToEnglish = new MorseToEnglish();
-morseToEnglish.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."); // console.log(morseToEnglish.breakDownMorse())
-// console.log(morseToEnglish.translateMorseToEnglish())
-// console.log(morseToEnglish.getStringOutput())
-
-console.log(morseToEnglish.phrase);
-console.log(morseToEnglish.translation);
+var morseToEnglish = new MorseToEnglish(); //    morseToEnglish.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
+//    // console.log(morseToEnglish.breakDownMorse())
+//    // console.log(morseToEnglish.translateMorseToEnglish())
+//    // console.log(morseToEnglish.getStringOutput())
+//   console.log(morseToEnglish.phrase)
+//   console.log(morseToEnglish.translation)

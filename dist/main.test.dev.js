@@ -5,40 +5,82 @@ var _types = require("@babel/types");
 var _main = require("./main");
 
 describe("English to Morse", function () {
-  var helloTranslation = new _main.EnglishToMorse();
-  helloTranslation.addNewPhrase("hello");
-  helloTranslation.breakDownPhrase();
-  helloTranslation.translateEnglishToMorse();
-  helloTranslation.getStringOutput();
+  var translator;
+  beforeEach(function () {
+    translator = new _main.EnglishToMorse();
+  });
   test("Should add `hello` to the phrase key within the object", function () {
-    expect(helloTranslation.phrase).toBe("hello");
+    //Arrange 
+    translator.addNewPhrase("hello"); // Assert
+
+    expect(translator.phrase).toBe("hello");
   });
   test("Should break up `hello` into array of uppercase letters", function () {
-    expect(helloTranslation.phraseArray).toMatchObject(['H', 'E', 'L', 'L', 'O']);
+    //Arrange
+    //Act
+    translator.addNewPhrase("hello");
+    translator.breakDownPhrase(); // Assert
+
+    expect(translator.phraseArray).toMatchObject(['H', 'E', 'L', 'L', 'O']);
   });
   test("Should access the key matching the letter from within the object, returning the morse values", function () {
-    expect(helloTranslation.translation).toMatchObject(['....', '.', '.-..', '.-..', '---']);
+    //Arrange
+    //Act
+    translator.addNewPhrase("hello");
+    translator.breakDownPhrase();
+    translator.getTranslation(); // Assert
+
+    expect(translator.translation).toMatchObject(['....', '.', '.-..', '.-..', '---']);
   });
   test("Should join the array together into a string an return it", function () {
-    expect(helloTranslation.output).toBe(".... . .-.. .-.. ---");
+    //Arrange
+    //Act
+    translator.addNewPhrase("hello");
+    translator.breakDownPhrase();
+    translator.getTranslation(); // Assert
+
+    expect(translator.output).toBe(".... . .-.. .-.. ---");
+  });
+  test("Integrated function should return translation", function () {
+    //Arrange
+    //Act
+    translator.translateMorseToEnglish("hello");
+    expect(translator.output).toBe(".... . .-.. .-.. ---");
   });
 });
 describe("Morse to English", function () {
-  var helloWorldTranslation = new _main.MorseToEnglish();
-  helloWorldTranslation.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
-  helloWorldTranslation.breakDownMorse();
-  helloWorldTranslation.translateMorseToEnglish();
-  helloWorldTranslation.getStringOutput();
+  var translator;
+  beforeEach(function () {
+    translator = new _main.MorseToEnglish();
+  }); // helloWorldTranslation.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
+  // helloWorldTranslation.breakDownMorse();
+  // helloWorldTranslation.translateMorseToEnglish();
+  // helloWorldTranslation.getStringOutput();
+
   test("Should add `hello world` to the phrase in the object", function () {
-    expect(helloWorldTranslation.phrase).toBe(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+    //Arrange 
+    translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."); // Assert
+
+    expect(translator.phrase).toBe(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
   });
   test("Should break up `hello world` into an array based on spaces between letters", function () {
-    expect(helloWorldTranslation.phraseArray).toMatchObject(['....', '.', '.-..', '.-..', '---', '/', '.--', '---', '.-.', '.-..', '-..']);
+    translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+    translator.breakDownPhrase();
+    translator.translateMorse();
+    expect(translator.phraseArray).toMatchObject(['....', '.', '.-..', '.-..', '---', '/', '.--', '---', '.-.', '.-..', '-..']);
   });
   test("Should translate each letter in the morse array ", function () {
-    expect(helloWorldTranslation.translation).toMatchObject(['H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D']);
+    //Arrange 
+    translator.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+    translator.breakDownPhrase();
+    translator.translateMorse(); //Assert 
+
+    expect(translator.translation).toMatchObject(['H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D']);
   });
-  test("Should return a string of english", function () {
+  test("Integrated function should return translation", function () {
+    //Arrange
+    translator.translateEnglishToMorse(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."); //Assert 
+
     expect(helloWorldTranslation.output).toBe("HELLO WORLD");
   });
 });
