@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MorseToEnglish = exports.EnglishToMorse = void 0;
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
@@ -31,11 +36,11 @@ Break the word up into and array. For spaces add a /
 Create a new array and for each item in the array find someway of accessing the value of that value. 
 
 // */
-var translateButton = document.querySelector("#button___translate");
-var refreshButton = document.querySelector("#button__refresh");
-var translation = document.querySelector("#translation__text");
-var userInput = document.querySelector("#input__text"); ///function get transaltion from the object 
-
+// const translateButton = document.querySelector("#button___translate");
+// const refreshButton = document.querySelector("#button__refresh");
+// const translation = document.querySelector("#translation__text");
+// let userInput = document.querySelector("#input__text");
+///function get transaltion from the object 
 var getMorseTranslation = function getMorseTranslation(newEnglishObject, phrase) {
   newEnglishObject.addNewPhrase(phrase);
   newEnglishObject.breakDownPhrase();
@@ -116,31 +121,29 @@ function () {
   return EnglishToMorse;
 }();
 
-; // /Get input from the user a
-
-translateButton.addEventListener("click", function () {
-  var userInputValue = document.querySelector("#input__text").value; //If the value is in English 
-
-  var engRegEx = new RegExp("[a-zA-z]");
-
-  if (engRegEx.test(userInputValue)) {
-    var _englishToMorse = new EnglishToMorse();
-
-    getMorseTranslation(_englishToMorse, userInputValue);
-    return getOutput(_englishToMorse, translation);
-  } //If the value is Morse
-
-
-  var morseToEnglish = new MorseToEnglish();
-  console.log(getEnglishTranslation(morseToEnglish, userInputValue));
-  return getOutput(morseToEnglish, translation);
-}); //Clear the input box
-
-refreshButton.addEventListener("click", function () {
-  userInput.value = "";
-  translation.innerHTML = ""; // getEnglishTranslation.clearPhrase();
-  // getMorseTranslation.clearPhrase();
-});
+exports.EnglishToMorse = EnglishToMorse;
+; // // /Get input from the user a
+//    translateButton.addEventListener("click", () => {
+//       const userInputValue = document.querySelector("#input__text").value;
+//       //If the value is in English 
+//       const engRegEx = new RegExp ("[a-zA-z]")
+//       if (engRegEx.test(userInputValue)) {
+//       const englishToMorse = new EnglishToMorse
+//       getMorseTranslation(englishToMorse, userInputValue);
+//       return getOutput(englishToMorse, translation)
+//       } 
+//       //If the value is Morse
+//       const morseToEnglish = new MorseToEnglish;
+//       console.log(getEnglishTranslation(morseToEnglish,userInputValue));
+//       return getOutput(morseToEnglish,translation);
+//    })
+// //Clear the input box
+//     refreshButton.addEventListener("click", () => {
+//       userInput.value = ""
+//       translation.innerHTML = ""
+//       // getEnglishTranslation.clearPhrase();
+//       // getMorseTranslation.clearPhrase();
+//    })
 
 var MorseToEnglish =
 /*#__PURE__*/
@@ -183,14 +186,17 @@ function (_EnglishToMorse) {
 }(EnglishToMorse); // Test Eng to Morse
 
 
-var englishToMorse = new EnglishToMorse();
-englishToMorse.addNewPhrase("hello");
-console.log(englishToMorse.breakDownPhrase());
-console.log(englishToMorse.translateEnglishToMorse());
-console.log(englishToMorse.getStringOutput()); /// Test Morse to Eng 
+exports.MorseToEnglish = MorseToEnglish;
+var englishToMorse = new EnglishToMorse(); // englishToMorse.addNewPhrase("hello");
+// console.log(englishToMorse.breakDownPhrase());
+// console.log(englishToMorse.translateEnglishToMorse());
+// console.log(englishToMorse.getStringOutput())
+/// Test Morse to Eng 
 
 var morseToEnglish = new MorseToEnglish();
-morseToEnglish.addNewPhrase(".... . .-.. .-.. ---");
-console.log(morseToEnglish.breakDownMorse());
-console.log(morseToEnglish.translateMorseToEnglish());
-console.log(morseToEnglish.getStringOutput());
+morseToEnglish.addNewPhrase(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."); // console.log(morseToEnglish.breakDownMorse())
+// console.log(morseToEnglish.translateMorseToEnglish())
+// console.log(morseToEnglish.getStringOutput())
+
+console.log(morseToEnglish.phrase);
+console.log(morseToEnglish.translation);
