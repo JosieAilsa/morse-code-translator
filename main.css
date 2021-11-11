@@ -39,7 +39,9 @@ body {
   border: none !important;
   color: #f1e1ec;
   padding: 5vmin;
-  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #input__text:focus {
@@ -72,6 +74,11 @@ body {
 body h1 {
   grid-area: 1/1/1/6;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
 }
 body .input {
   grid-area: 2/1/2/4;

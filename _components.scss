@@ -7,7 +7,9 @@
     border: none !important;
     color: $secondary-color;
     padding:5vmin;
-    text-align: center;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
 }
 
 #input__text:focus{
