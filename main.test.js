@@ -99,7 +99,7 @@ describe("Morse to English", () => {
     })
     test("Integrated function should return translation", () => {
         //Arrange
-        translator.translateEnglishToMorse(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
+        translator.translateMorseToEnglish(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
         //Assert 
         expect(translator.output).toBe("HELLO WORLD")
     })

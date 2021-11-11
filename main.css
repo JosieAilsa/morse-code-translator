@@ -38,6 +38,8 @@ body {
   border-radius: 1vmin;
   border: none !important;
   color: #f1e1ec;
+  padding: 5vmin;
+  text-align: center;
 }
 
 #input__text:focus {
